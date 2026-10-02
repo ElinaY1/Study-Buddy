@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#BA0C2F">
+  <meta name="color-scheme" content="light dark">
+  <title>Chatbot</title>
+  <link rel="icon" id="favicon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top bar: bot name + buttons -->
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-emoji" id="bot-emoji" aria-hidden="true"></span>
+      <div class="brand-text">
+        <h1 id="bot-name">Chatbot</h1>
+        <p id="bot-tagline" class="tagline"></p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button id="new-chat-btn" class="header-btn" type="button">✨ New chat</button>
+      <button id="api-key-btn" class="header-btn" type="button">🔑 API key</button>
+    </div>
+  </header>
+
+  <!-- The conversation -->
+  <main id="chat" class="chat">
+    <div id="messages" class="messages" aria-live="polite"></div>
+    <div id="starters" class="starters" hidden></div>
+  </main>
+
+  <!-- Typing box -->
+  <form id="chat-form" class="composer">
+    <div class="composer-inner">
+      <textarea id="user-input" rows="1" placeholder="Type your message..." aria-label="Your message"></textarea>
+      <button id="send-btn" type="submit" aria-label="Send message">➤</button>
+    </div>
+    <p class="hint">Enter to send · Shift+Enter for a new line</p>
+  </form>
+
+  <!-- API key pop-up -->
+  <div id="key-modal" class="modal-overlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="key-title">
+      <h2 id="key-title">🔑 Your Gemini API key</h2>
+      <p>Paste your key below. It is kept in this browser only and is never saved in the website's code.</p>
+      <p><a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">Get a free key from Google AI Studio ↗</a></p>
+      <input id="key-input" type="password" autocomplete="off" spellcheck="false" placeholder="Paste your API key here">
+      <label class="remember">
+        <input type="checkbox" id="remember-key"> Remember on this device
+      </label>
+      <p class="small">Only tick this on your own computer or phone.</p>
+      <p id="key-status" class="key-status"></p>
+      <div class="modal-actions">
+        <button id="forget-key-btn" type="button" class="btn-link">Forget saved key</button>
+        <button id="cancel-key-btn" type="button" class="btn-secondary">Cancel</button>
+        <button id="save-key-btn" type="button" class="btn-primary">Save key</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- config.js must load BEFORE script.js -->
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
